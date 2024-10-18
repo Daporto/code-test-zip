@@ -1,23 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <head>
-	<meta charset="utf-8">
-	<title>Zip Code</title>
-	<meta name="description" content="A frontend dev aptitude test by Deep Space Robots.">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="reset.css">
-	<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <title>Zip Code</title>
+  <meta
+    name="description"
+    content="A frontend dev aptitude test by Deep Space Robots."
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-	<input type="text" id="postalCode"/>
-	<button onclick="getPostalCodeInfo()">Search</button>
-	<div id="postalCodeInfoContainer">
-	<h2 id="latitude">Latitude: </h2>
-	<h2 id="longitude">Longitude: </h2>
-	<h2 id="placeName">Place name: </h2>
-	<h2 id="state">State: </h2>
-	<h2 id="stateAbbreviation">State abbreviation: </h2>
-	</div>
-	<script src="script.js"></script>
+  <div class="global-container">
+    <div class="container">
+      <div class="searchBox">
+        <input
+          class="postalCodeInput"
+          id="postalCode"
+          placeholder="postal code"
+        />
+        <button class="searchButton" onclick="getPostalCodeInfo()">Search</button>
+      </div>
+      <div class="postalCodeInfoContainer-parent">
+        <div id="postalCodeInfoContainer">
+          <h2 class="textLabel" id="latitude"></h2>
+          <h2 class="textLabel" id="longitude"></h2>
+          <h2 class="textLabel" id="placeName"></h2>
+          <h2 class="textLabel" id="state"></h2>
+          <h2 class="textLabel" id="stateAbbreviation"></h2>
+        </div>
+        <div id="imageContainer"></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
-</html>
-

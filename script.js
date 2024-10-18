@@ -1,7 +1,5 @@
 const getPostalCodeInfo = async () => {
-    cleanFields();
     const postalCode = document.getElementById('postalCode').value;
-    console.log(postalCode);
     const url = `http://api.zippopotam.us/US/${postalCode}`;
     try {
         const response = await fetch(url);
@@ -11,13 +9,16 @@ const getPostalCodeInfo = async () => {
         const data = await response.json();
         const placeInfo = data.places[0];
         const stateAbbreviation = placeInfo['state abbreviation'];
-        document.getElementById('latitude').textContent += placeInfo.latitude;
-        document.getElementById('longitude').textContent += placeInfo.longitude;    
-        document.getElementById('placeName').textContent += placeInfo['place name'];
-        document.getElementById('state').textContent += placeInfo.state;    
-        document.getElementById('stateAbbreviation').textContent += stateAbbreviation;
-        const stateImage = `<img id='stateImage' src="/states/${stateAbbreviation}.svg" alt="State's Image" width="300" height="300">`;
-        const container = document.getElementById('postalCodeInfoContainer')
+        document.getElementById('latitude').textContent = `Latitude: ${placeInfo.latitude}`;
+        document.getElementById('longitude').textContent = `Longitude: ${placeInfo.longitude}`;    
+        document.getElementById('placeName').textContent = `Place name: ${placeInfo['place name']}`;
+        document.getElementById('state').textContent = `State: ${placeInfo.state}`;    
+        document.getElementById('stateAbbreviation').textContent = `State abbreviation: ${stateAbbreviation}`;
+        const stateImage = `<img id='stateImage' src="/states/${stateAbbreviation}.svg" alt="State Image" width="200" height="200">`;
+        const currentImage = document.getElementById('stateImage');
+        if(currentImage) currentImage.remove();
+        const container = document.getElementById('imageContainer');
+        container.style.display = 'flex';
         container.insertAdjacentHTML('beforeend', stateImage);
     } catch (error) {
         alert(error.message)
